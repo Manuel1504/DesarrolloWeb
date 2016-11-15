@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="col-md-12">
+    <div class="col-md-4 text-left">
+    </div>
+    <div class="col-md-4 text-center">
+      <h4>Perfiles de acceso</h4>
+    </div>
+    <div class="col-md-4 text-right">
+
+        <?php if ($_SESSION["Tipo"] == 1) { echo $this->HTML->link("Agregar perfil",array("controller" => "perfiles", "method" => "add"),"glyphicon glyphicon-plus"); }?>
+
+    </div>
+  </div>
+  <?php if (!empty($types)){ ?>
+  <table class="table table-hover table-condensed">
+    <Thead class="text-center">
+     <tr>
+       <th>Numero</th>
+       <th>Tipo de usuario</th>
+       <?php if ($_SESSION["Tipo"] == 1) {?>
+       <th>Acciones</th>
+       <?php}else{ ?>
+         <th></th>
+         <?php } ?>
+     </tr>
+    </Thead>
+    <tbody>
+
+      <?php foreach ($types as $tipo): ?>
+      <tr>
+       <td><?php  echo $tipo["types"]["id"]; ?></td>
+       <td><?php  echo $tipo["types"]["name"]; ?></td>
+
+       <?php if ($_SESSION["Tipo"] == 1) {?>
+         <td>
+           <?php echo $this->HTML->link("Edit",array("controller" => "perfiles", "method" => "edit", "arg" => $tipo["types"]["id"]),"glyphicon glyphicon-cog"); ?>
+           <?php echo $this->HTML->link("Delete",array("controller" => "perfiles", "method" => "delete", "arg" => $tipo["types"]["id"]),"glyphicon glyphicon-remove"); ?>
+         </td>
+       <?php}else{ ?>
+         <td></td>
+         <?php } ?>
+
+      </tr>
+    <?php endforeach ?>
+    </tbody>
+  </table>
+  <?php } ?>
+
+</div>
