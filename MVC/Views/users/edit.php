@@ -8,7 +8,7 @@
       <input type="hidden" name="id" value="<?php echo $user["id"]; ?>">
       <p>
         <label for="username">Usuario</label>
-        <input type="text" name="name" class="form-control" value="<?php echo $user["name"]?>">
+        <input type="text" name="username" class="form-control" value="<?php echo $user["username"]?>">
       </p>
       <p>
         <label for="password">Contrasenia</label>

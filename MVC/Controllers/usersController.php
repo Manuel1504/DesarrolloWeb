@@ -23,10 +23,16 @@ class usersController extends Controller
     //$userCount = $this->users->find("users","count");
     //$this->set(compact("users","usersCount"));
   }
+
+  public function form()
+  {
+
+  }
+  
   public function add()
   {
-   //  print_r($_POST);
-     if ($_SESSION["Tipo"] == "1") {
+     if ($_SESSION["Tipo"] == "1")
+     {
         if ($_POST) {
           $pass = new Password();
           $_POST["password"] = $pass->getPassword($_POST["password"]);
@@ -39,23 +45,22 @@ class usersController extends Controller
         }
         $this->set("types",$this->users->find("types","all"));
         $this->_view->setLayout("Bootstrap");
-    }
-    //$this->_view->setView("agregar");
+   }
   }
 
   public function edit($id)
   {
-    if ($id) {
+    if ($_SESSION["Tipo"] == "1")
+    {
+     if ($id) {
       $option = array("conditions"=>"users.id=".$id);
       $user =  $this->users->find("users","first",$option);
       $this->set("user",$user);
       $this->set("types",$this->users->find("types","all"));
       $this->_view->setLayout("Bootstrap");
     }
-    /*else {
-      $this->redirect(array("controller"=>"users"));
-    }*/
-    if ($_POST) {
+
+     if ($_POST) {
       if (!empty($_POST["newPassword"])) {
         $pass = new Password();
         $_POST["password"] =$pass->getPassword($_POST["newPassword"]);
@@ -67,14 +72,18 @@ class usersController extends Controller
         $this->redirect(array("controller"=>"users", "method"=> "edit/".$_POST["id"]));
       }
     }
+    }
   }
   public function delete($id)
   {
-    $conditions = "id =".$id;
-    if ($this->users->delete("users",$conditions)) {
-      $this->redirect(array("controller"=>"users"));
-    }else {
-      $this->redirect(array("controller"=>"users","method" => "add"));
+    if ($_SESSION["Tipo"] == "1")
+    {
+      $conditions = "id =".$id;
+      if ($this->users->delete("users",$conditions)) {
+        $this->redirect(array("controller"=>"users"));
+      }else {
+        $this->redirect(array("controller"=>"users","method" => "add"));
+      }
     }
   }
   public function login()
@@ -89,7 +98,7 @@ class usersController extends Controller
       $username = $filter->sanitizeText($_POST["username"]);
       $password = $filter->sanitizeText($_POST["password"]);
 
-      $option = array("conditions" => "name = '$username'");
+      $option = array("conditions" => "username = '$username'");
       $user = $this->users->find("users","first",$option);
 
       if ($pass->isValid($password,$user["password"])) {

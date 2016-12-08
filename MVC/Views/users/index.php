@@ -11,12 +11,12 @@
     </div>
   </div>
   <?php if (!empty($users)){ ?>
-  <table class="table table-hover table-condensed">
+  <table class="table table-hover table-condensed table-responsive">
     <Thead class="text-center">
      <tr>
        <th>Numero</th>
        <th>Usuario</th>
-       <th>Password</th>
+       
        <th>Rol</th>
        <?php if ($_SESSION["Tipo"] == 1) {?>
        <th>Acciones</th>
@@ -30,8 +30,8 @@
       <?php foreach ($users as $user): ?>
       <tr>
        <td><?php  echo $user["users"]["id"]; ?></td>
-       <td><?php  echo $user["users"]["name"]; ?></td>
-       <td><?php  echo $user["users"]["password"]; ?></td>
+       <td><?php  echo $user["users"]["username"]; ?></td>
+
        <td><?php  echo $user["types"]["name"]?></td>
 
        <?php if ($_SESSION["Tipo"] == 1) {?>

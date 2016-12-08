@@ -6,7 +6,7 @@
     <form action="<?php echo APP_URL."/users/add";?>" method="post">
       <p>
         <label for="name">Usuario</label>
-        <input type="text" class="form-control" placeholder="Usuario" name="name">
+        <input type="text" class="form-control" placeholder="Usuario" name="username">
       </p>
       <p>
         <label for="password">Contrasenia</label>
@@ -15,7 +15,7 @@
       <p>
         <label for="type_id">Tipo de usuario</label>
         <select name="type_id" class="form-control" id="type_id">
-          <?php foreach ($types as $tipo ):?>
+          <?php print_r($types); foreach ($types as $tipo ):?>
             <option value="<?php echo $tipo["types"]["id"];?>">
               <?php echo $tipo["types"]["name"];?>
             </option>

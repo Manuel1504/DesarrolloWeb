@@ -28,7 +28,7 @@ class Html extends Helper
           $url = "/".$url["method"];
         }
       }
-      $link = '<a href="'.APP_URL.$url.'"><span class="'.$span.'"></span>'." ".$title.'</a>';
+      $link = '<a style="text-decoration:none;color:gray;" href="'.APP_URL.$url.'"><span class="'.$span.'"></span>'." ".$title.'</a>';
       return $link;
     }
   }

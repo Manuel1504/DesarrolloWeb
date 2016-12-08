@@ -12,7 +12,7 @@
     </div>
   </div>
   <?php if (!empty($types)){ ?>
-  <table class="table table-hover table-condensed">
+  <table class="table table-hover table-condensed table-responsive">
     <Thead class="text-center">
      <tr>
        <th>Numero</th>

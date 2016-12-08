@@ -22,7 +22,8 @@ class perfilesController extends Controller
 
   public function add()
   {
-   //  print_r($_POST);
+    if ($_SESSION["Tipo"] == "1")
+    {
      if ($_SESSION["Tipo"] == "1") {
         if ($_POST) {
           if ($this->perfiles->save("types",$_POST)) {
@@ -33,37 +34,41 @@ class perfilesController extends Controller
           }
         }
         $this->_view->setLayout("Bootstrap");
+      }
     }
-    //$this->_view->setView("agregar");
   }
 
   public function edit($id)
   {
-    if ($id) {
+    if ($_SESSION["Tipo"] == "1")
+    {
+     if ($id) {
       $option = array("conditions"=>"types.id=".$id);
       $perfil =  $this->perfiles->find("types","first",$option);
       $this->set("Perfil",$perfil);
       $this->_view->setLayout("Bootstrap");
     }
-    /*else {
-      $this->redirect(array("controller"=>"users"));
-    }*/
-    if ($_POST) {
+
+     if ($_POST) {
       if ($this->perfiles->Update("types",$_POST)) {
         $this->redirect(array("controller"=>"perfiles", "method" => "index"));
       }else {
         $this->redirect(array("controller"=>"perfiles", "method"=> "edit/".$_POST["id"]));
       }
     }
+    }
   }
 
   public function delete($id)
   {
-    $conditions = "id =".$id;
-    if ($this->perfiles->delete("types",$conditions)) {
-      $this->redirect(array("controller"=>"perfiles","method"=>"index"));
-    }else {
-      $this->redirect(array("controller"=>"perfiles","method" => "add"));
+    if ($_SESSION["Tipo"] == "1")
+    {
+      $conditions = "id =".$id;
+      if ($this->perfiles->delete("types",$conditions)) {
+        $this->redirect(array("controller"=>"perfiles","method"=>"index"));
+      }else {
+        $this->redirect(array("controller"=>"perfiles","method" => "add"));
+      }
     }
   }
 

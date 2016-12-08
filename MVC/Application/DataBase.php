@@ -16,7 +16,7 @@ class ClassPDO
   public  $lastInsertID;
   public  $numbersRows;
 
-  function __construct($drive = "mysql", $host = "localhost", $database = "test", $username = "root", $password = "")
+  function __construct($drive = "mysql", $host = "localhost", $database = "Prueba", $username = "root", $password = "")
   {
   $this->drive = $drive;
   $this->host = $host;
@@ -119,6 +119,7 @@ class ClassPDO
        }
     }
     $sql = "INSERT INTO $table ($fieldsToSave) values ($valueToSave)";
+
     $this->result = $this->conexion->query($sql);
     return $this->result;
   }
@@ -130,6 +131,7 @@ class ClassPDO
       $meta = $result->getColumnMeta($i);
       $fields[$meta["name"]] = null;
     }
+
     if (array_key_exists("id",$data)) {
       $fieldsToSave = "";
       $id = $data["id"];
@@ -141,7 +143,9 @@ class ClassPDO
       }
       $fieldsToSave = substr_replace($fieldsToSave,"",-1);
       $sql = "Update $table SET $fieldsToSave  where $table.id = $id;";
+
     }
+
     $this->result = $this->conexion->query($sql);
     return $this->result;
   }
