@@ -1,34 +1,49 @@
 <?php
 
 /**
- *
+ * 
+ * @author Jose Manuel Flores Rodriguez
+ * @copyright copyright 2016 UTRM Manu y asociados
+ * @return Object 
  */
 class usersController extends Controller
 {
-
+  /**
+   * @author Jose Manuel Flores Rodriguez
+   * @return  Constructor de la clase
+   * */
   public function __construct()
   {
      parent::__construct();
   }
-
+/**
+  *@return Void
+  * @author Jose Manuel Flores Rodriguez
+  * @method void Metodo que llama a la vista del index, agrega un Layout para la vista y manda una variable a la vista con informacion.
+  */
   public function index()
   {
-    //Opcion 1
+
     $conditions = array("conditions" => "users.type_id = types.id");
     $this->set("users",$this->users->find("users, types","all", $conditions));
     $this->set("usersCount",$this->users->find("users","count"));
     $this->_view->setLayout("Bootstrap");
-    //Opcion 2
-    //$users = $this->users->find("users","all");
-    //$userCount = $this->users->find("users","count");
-    //$this->set(compact("users","usersCount"));
-  }
 
+  }
+/**
+  *@return Void
+  * @author Jose Manuel Flores Rodriguez
+  * @method void Metodo que llama a la vista del form.
+  */
   public function form()
   {
 
   }
-  
+  /**
+  *@return Void
+  * @author Jose Manuel Flores Rodriguez
+  * @method void Metodo que llama a la vista del add, agrega un Layout para la vista y agrega datos a la base de datos
+  */
   public function add()
   {
      if ($_SESSION["Tipo"] == "1")
@@ -47,7 +62,11 @@ class usersController extends Controller
         $this->_view->setLayout("Bootstrap");
    }
   }
-
+/**
+  *@return Void
+  * @author Jose Manuel Flores Rodriguez
+  * @method void Metodo que llama a la vista del edit, agrega un Layout para la vista, manda datos recuperados a la base de datos en una variable y actualiza datos a la base de datos.
+  */
   public function edit($id)
   {
     if ($_SESSION["Tipo"] == "1")
@@ -74,6 +93,11 @@ class usersController extends Controller
     }
     }
   }
+  /**
+  *@return Void
+  * @author Jose Manuel Flores Rodriguez
+  * @method void Metodo que llama a la vista del delete, agrega un Layout para la vista, elimina un registro.
+  */
   public function delete($id)
   {
     if ($_SESSION["Tipo"] == "1")
@@ -86,6 +110,11 @@ class usersController extends Controller
       }
     }
   }
+  /**
+  *@return Void
+  * @author Jose Manuel Flores Rodriguez
+  * @method void Metodo que llama a la vista del login, compara los datos recibidos con informacion de la base de datos y evalua si puede accesar o no.
+  */
   public function login()
   {
     $this->_view->setLayout("Bootstrap");
@@ -111,7 +140,11 @@ class usersController extends Controller
     }
 
   }
-
+  /**
+  *@return Void
+  * @author Jose Manuel Flores Rodriguez
+  * @method void Metodo que llama a al metodo de la clase Authorization que contiene el metodo de logout.
+  */
   public function logout()
   {
     $auth = new Authorization();

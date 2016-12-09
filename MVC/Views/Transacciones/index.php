@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="col-md-12">
     <div class="col-md-4 text-left">
@@ -11,7 +12,12 @@
     </div>
   </div>
   <?php if (!empty($Datos)){ ?>
-  <table class="table table-hover table-condensed table-responsive">
+
+    <p>
+      Balance: <?php print_r($c);?>
+    </p>
+    <div class="table-responsive">
+  <table class="table table-hover table-condensed ">
     <Thead class="text-center">
      <tr>
        <th>Serie</th>
@@ -51,7 +57,7 @@
                 <td style="color:green;"><?php  echo round($data["transactions"]["amount"],2);?></td>
        <?php } else { ?>
             <td style="color:red;"><?php  echo round($data["transactions"]["amount"],2);?></td>
-            <?php }?>
+            <?php } ?>
        <?php if ($_SESSION["Tipo"] == 1) {?>
          <td>
            <?php echo $this->HTML->link("Edit",array("controller" => "Transacciones", "method" => "edit", "arg" => $data["transactions"]["id"]),"glyphicon glyphicon-cog"); ?>
@@ -65,6 +71,7 @@
     <?php } ?>
     </tbody>
   </table>
+  </div>
   <?php } ?>
 
 </div>

@@ -94,6 +94,12 @@ class ClassPDO
         $this->result = $result->fetchColumn();
         break;
 
+        case "Suma":
+        $sql = "select sum(amount) from $table";
+        $result = $this->conexion->query($sql);
+        $this->result = $result->fetchColumn();
+        break;
+
         default:
         goto all;
 
