@@ -14,7 +14,7 @@
   <?php if (!empty($Datos)){ ?>
 
     <p>
-      Balance: <?php print_r($c);?>
+      <label>Balance General:</label> <strong> <?php print_r($c);?> </strong>
     </p>
     <div class="table-responsive">
   <table class="table table-hover table-condensed ">
@@ -54,9 +54,9 @@
        <td><?php  echo $data["transactions"]["description"]?></td>
        <td><?php  echo $data["transactions"]["date"]?></td>
        <?php if ($data["transactions"]["amount"] > 0){ ?>
-                <td style="color:green;"><?php  echo round($data["transactions"]["amount"],2);?></td>
+                <td style="color:green;">$<?php  echo number_format($data["transactions"]["amount"], 2 , "." ,",");?></td>
        <?php } else { ?>
-            <td style="color:red;"><?php  echo round($data["transactions"]["amount"],2);?></td>
+            <td style="color:red;">$<?php  echo number_format($data["transactions"]["amount"], 2 , "." ,",");?></td>
             <?php } ?>
        <?php if ($_SESSION["Tipo"] == 1) {?>
          <td>

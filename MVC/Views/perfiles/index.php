@@ -12,6 +12,7 @@
     </div>
   </div>
   <?php if (!empty($types)){ ?>
+  <div class="table-responsive">
   <table class="table table-hover table-condensed table-responsive">
     <Thead class="text-center">
      <tr>
@@ -44,6 +45,7 @@
     <?php endforeach ?>
     </tbody>
   </table>
+  </div>
   <?php } ?>
 
 </div>

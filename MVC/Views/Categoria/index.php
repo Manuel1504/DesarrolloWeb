@@ -12,7 +12,8 @@
     </div>
   </div>
   <?php if (!empty($Datos)){ ?>
-  <table class="table table-hover table-condensed table-responsive">
+      <div class="table-responsive">
+  <table class="table table-hover table-condensed ">
     <Thead class="text-center">
      <tr>
        <th>Numero</th>
@@ -44,6 +45,7 @@
     <?php endforeach ?>
     </tbody>
   </table>
+</div>
   <?php } ?>
 
 </div>

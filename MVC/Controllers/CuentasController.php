@@ -1,10 +1,10 @@
 <?php
 
 /**
- * 
+ *
  * @author Jose Manuel Flores Rodriguez
  * @copyright copyright 2016 UTRM Manu y asociados
- * @return Object 
+ * @return Object
  */
 class CuentasController extends Controller
 {
@@ -16,7 +16,7 @@ class CuentasController extends Controller
   {
     parent::__construct();
   }
-  
+
 /**
   *@return Void
   * @author Jose Manuel Flores Rodriguez
